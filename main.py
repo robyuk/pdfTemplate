@@ -11,7 +11,8 @@ if __name__ == '__main__':
         pdf.set_font(family='Arial', style='B', size=12)
         pdf.set_text_color(80, 80, 240)
         pdf.cell(w=0, h=12, align='l', ln=1, txt=row.Topic)
-        pdf.line(x1=11, y1=18, x2=200, y2=18)
+        for line in range(18, 297, 10):  # Line the page
+            pdf.line(x1=11, y1=line, x2=200, y2=line)
 
         # Footer
         pdf.ln(265)
@@ -20,6 +21,9 @@ if __name__ == '__main__':
 
         for page in range(1, row.Pages):
             pdf.add_page()
+            for line in range(8, 297, 10):  # Line the page
+                pdf.line(x1=11, y1=line, x2=200, y2=line)
+
             # Footer
             pdf.ln(277)
             pdf.cell(w=0, h=10, align='R', txt=row.Topic)
